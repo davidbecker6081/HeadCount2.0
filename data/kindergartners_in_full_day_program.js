@@ -1,11 +1,11 @@
 module.exports =
-  [
-  {
-    "Location": "Colorado",
-    "TimeFrame": 2007,
-    "DataFormat": "Percent",
-    "Data": 0.39465
-  },
+    [
+    {
+      "Location": "Colorado",
+      "TimeFrame": 2007,
+      "DataFormat": "Percent",
+      "Data": 0.39465
+    },
   {
     "Location": "Colorado",
     "TimeFrame": 2006,
