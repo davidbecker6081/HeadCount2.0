@@ -1,42 +1,30 @@
 export default class DistrictRepository {
 
-  constructor(data) {
-    this.data = this.removeDuplicates(data)
+  constructor(originalData) {
+    this.data = this.removeDuplicates(originalData)
 
   }
 
-  removeDuplicates(data) {
-    const parsedData = data.reduce((newDataObj, dataObj, index) => {
+  removeDuplicates(originalData) {
+    const parsedData = originalData.reduce((newDataObj, dataObj, index) => {
       if(!newDataObj[dataObj['Location'].toUpperCase()]) {
         newDataObj[dataObj['Location'].toUpperCase()] = {
           location: dataObj['Location'].toUpperCase(),
           dataFormat: dataObj['DataFormat'],
-          yearData: [ {year: dataObj['TimeFrame'], data: dataObj['Data']} ]
+          data: { [dataObj['TimeFrame']]:
+          (Math.round(dataObj['Data'] * 1000)/ 1000) || 0 }
         }
       } else {
-        let newYearDataArray = [...newDataObj[dataObj['Location'].toUpperCase()].yearData, {year: dataObj['TimeFrame'], data: dataObj['Data']}]
-
-        newDataObj[dataObj['Location'].toUpperCase()].yearData = newYearDataArray
+        newDataObj[dataObj['Location'].toUpperCase()].data[dataObj['TimeFrame']] = (Math.round(dataObj['Data'] * 1000)/ 1000) || 0
       }
       return newDataObj
     }, {})
 
-    // console.log('parsedData', parsedData['COLORADO']);
     return parsedData
   }
 
-  findByName(districtName) {
-    const dataKeys = Object.keys(this.data);
-    // console.log(dataKeys);
-    const foundKey = dataKeys.find((key) => key === districtName.toUpperCase())
-    console.log(foundKey);
-    if(foundKey === undefined) {
-      return undefined;
-    } else {
-      console.log(this.data[districtName.toUpperCase()].location);
-      return this.data[districtName.toUpperCase()]
-    }
-
+  findByName(districtName = undefined) {
+    return districtName ? this.data[districtName.toUpperCase()] : districtName
   }
 
 }
