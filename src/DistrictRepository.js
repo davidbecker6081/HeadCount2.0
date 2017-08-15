@@ -27,4 +27,14 @@ export default class DistrictRepository {
     return districtName ? this.data[districtName.toUpperCase()] : districtName
   }
 
+  findAllMatches(districtName = '') {
+    const matchedDistrictsArray = Object.keys(this.data).filter((district) => district.includes(districtName.toUpperCase()))
+
+    const matchesArray = matchedDistrictsArray.map((districtKey) =>
+      this.data[districtKey]
+    )
+
+    return matchesArray
+  }
+
 }
