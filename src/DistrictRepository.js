@@ -25,18 +25,11 @@ export default class DistrictRepository {
     return parsedData
   }
 
-  findByName(districtName) {
-    const dataKeys = Object.keys(this.data);
-    // console.log(dataKeys);
-    const foundKey = dataKeys.find((key) => key === districtName.toUpperCase())
-    console.log(foundKey);
-    if(foundKey === undefined) {
-      return undefined;
-    } else {
-      console.log(this.data[districtName.toUpperCase()].location);
+  findByName(districtName = undefined) {
+    if (districtName) {
       return this.data[districtName.toUpperCase()]
     }
-
+    return districtName
   }
 
 }
