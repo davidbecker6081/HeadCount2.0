@@ -4,8 +4,8 @@ import DistrictCard from './DistrictCard';
 
 const DistrictList = ({ districtListArray }) => {
 
-  const districtCardInstance = districtListArray.map(districtObj =>
-    <DistrictCard {...districtObj} key={districtObj.location} />
+  const districtCardInstance = districtListArray.map((districtObj, i) =>
+      <DistrictCard {...districtObj} key={i} />
   )
 
   return (
