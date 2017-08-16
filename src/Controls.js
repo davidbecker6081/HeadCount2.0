@@ -4,6 +4,8 @@ import ThirdGradeTests from '../data/3rd_grade_tests.js'
 import EigthGradeTests from '../data/8th_grade_test_scores.js'
 import kinderData from '../data/kindergartners_in_full_day_program.js';
 
+import './CssFolder/Controls.css';
+
 export default class Controls extends Component {
   constructor() {
     super()
@@ -41,7 +43,7 @@ export default class Controls extends Component {
   render () {
     return (
       <div className='controls-container'>
-        <h1>Headcount 2.0</h1>
+        <h1 className= 'app-title'>Headcount 2.0</h1>
         <input type="text" placeholder='Enter Data Set To Search'
         value={this.state.searchInput}
         onChange={ this.handleChange.bind(this) }/>
