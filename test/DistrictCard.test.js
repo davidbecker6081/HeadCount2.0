@@ -22,7 +22,7 @@ describe('DistrictCard', () => {
           '2011': 0.327,
           '2012': 0.427,
           '2013': 0.227,
-          '2014': 0.327
+          '2014': 0.527
         }
       }
       wrapper = shallow(<DistrictCard {...districtData} key={5}/>)
@@ -59,6 +59,14 @@ describe('DistrictCard', () => {
 
     expect(wrapper.instance().props.location).toEqual(location)
     expect(wrapper.instance().props.data).toEqual(data)
+  })
+
+  it('should have correct class for each li element', () => {
+    const liElementAboveFive = wrapper.find('li').at(10)
+    const liElementBelowFive = wrapper.find('li').at(1)
+
+    expect(liElementAboveFive.props().className).toEqual('card-data aboveFive')
+    expect(liElementBelowFive.props().className).toEqual('card-data belowFive')
   })
 
 })
