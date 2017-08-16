@@ -1,0 +1,28 @@
+* {
+  box-sizing: border-box;
+}
+body, html, section, main, div, aside {
+  margin: 0;
+  border: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+}
+
+body{
+  background-image: url('http://edfuel.org/wp-content/uploads/2015/09/blueprint2.jpg');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  margin: auto;
+  height: 90vh;
+  width: 95%;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+
+  }
+
+  .app-title {
+    color: #FFF;
+  }
