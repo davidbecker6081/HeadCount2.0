@@ -14,8 +14,10 @@ class App extends Component {
 
   populateDistrictList(data) {
     const dataArray = Object.keys(data).map((location) => data[location])
+    console.log(dataArray);
     this.setState({
       districtList: dataArray
+
     })
   }
 
@@ -23,6 +25,7 @@ class App extends Component {
     return (
       <div>
         <Controls populateDistrictList={this.populateDistrictList.bind(this)}/>
+        <DistrictList districtListArray={this.state.districtList} />
       </div>
     );
   }
