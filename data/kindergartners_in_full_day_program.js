@@ -1,5 +1,4 @@
-module.exports =
-    [
+module.exports = [
     {
       "Location": "Colorado",
       "TimeFrame": 2007,

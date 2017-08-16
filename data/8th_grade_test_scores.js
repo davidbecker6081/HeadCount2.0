@@ -1,5 +1,4 @@
-module.exports = {
-[
+module.exports = [
   {
     "Location": "Colorado",
     "Score": "Math",
@@ -26608,4 +26607,3 @@ module.exports = {
     "Data": 0.30189
   }
 ]
-}
