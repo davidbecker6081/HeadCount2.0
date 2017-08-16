@@ -2,7 +2,6 @@ export default class DistrictRepository {
 
   constructor(originalData) {
     this.data = this.removeDuplicates(originalData)
-
   }
 
   removeDuplicates(originalData) {
