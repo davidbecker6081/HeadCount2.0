@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
 import Controls from './Controls' ;
-import DistrictCard from './DistrictCard';
 import DistrictList from'./DistrictList';
 
 class App extends Component {
