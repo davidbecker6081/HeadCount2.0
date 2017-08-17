@@ -1,5 +1,6 @@
 import React from 'react';
 import DistrictCard from './DistrictCard';
+import './CssFolder/DistrictList.css';
 
 
 const DistrictList = ({ districtListArray }) => {
@@ -9,7 +10,7 @@ const DistrictList = ({ districtListArray }) => {
   )
 
   return (
-    <div>
+    <div className='card-container'>
       {districtCardInstance}
     </div>
   )

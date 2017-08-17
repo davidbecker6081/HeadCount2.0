@@ -21,9 +21,9 @@ export default Controls
 // let keyForData = dataKeys[checkKeys[0]]
 // console.log('checkKeys', checkKeys);
 // console.log('keyforData', keyForData);
-
 // if (checkKeys.length) {
   //populateDistrictList
 // } else {
 //   return alert('invalid input')
 // }
+

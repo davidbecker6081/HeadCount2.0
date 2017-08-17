@@ -1,0 +1,34 @@
+* {
+  box-sizing: border-box;
+}
+body, html, section, main, div, aside {
+  margin: 0;
+  border: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+}
+
+article {
+  height: 300px;
+  width: 250px;
+  background: rgba(204, 219, 220, .7);
+  margin: 10px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 3px 3px 3px #2D2D2A;
+}
+
+article:hover {
+  cursor: pointer;
+}
+
+h2 {
+  font-size: 16px;
+  border-bottom: 2px solid #000;
+  padding-bottom: 5px;
+}
+
+li {
+  list-style-type: none;
+  margin: 3px 0px;
+}
