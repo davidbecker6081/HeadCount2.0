@@ -2,21 +2,21 @@ import React, { Component } from 'react';
 import './App.css';
 import Controls from './Controls' ;
 import DistrictList from'./DistrictList';
+import kinderData from '../data/kindergartners_in_full_day_program.js';
+import DistrictRepository from './DistrictRepository'
 
 class App extends Component {
   constructor() {
     super()
+    this.data = new DistrictRepository(kinderData)
     this.state = {
-      districtList: []
+      districtList: this.data.findAllMatches('')
     }
   }
 
-  populateDistrictList(data) {
-    const dataArray = Object.keys(data).map((location) => data[location])
-    console.log(dataArray);
+  populateDistrictList(e) {
     this.setState({
-      districtList: dataArray
-
+      districtList: this.data.findAllMatches(e.target.value)
     })
   }
 
