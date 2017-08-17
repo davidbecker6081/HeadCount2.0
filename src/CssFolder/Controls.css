@@ -44,6 +44,7 @@ body, html, section, main, div, aside {
   text-align: center;
   box-shadow: 5px 5px 3px #2D2D2A;
   font-size: 16px;
+  outline: none;
 }
 
 .search-input:hover {

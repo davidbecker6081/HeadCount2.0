@@ -5,9 +5,11 @@ import './CssFolder/Controls.css';
 
   return (
     <div className='controls-container'>
-      <h1 className='app-title'>Headcount 2.0</h1>
-      <input type="text" placeholder='Enter District To Search'
-      onChange={populateDistrictList}/>
+      <section className='heading-container'>
+        <h1 className='app-title'>Headcount 2.0</h1>
+        <input className='search-input' type="text"  placeholder='Enter District To Search'
+        onChange={populateDistrictList}/>
+      </section>
     </div>
   )
 }
@@ -26,4 +28,3 @@ export default Controls
 // } else {
 //   return alert('invalid input')
 // }
-
