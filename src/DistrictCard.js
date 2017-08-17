@@ -1,4 +1,5 @@
 import React from 'react';
+import './CssFolder/DistrictCard.css';
 
 const DistrictCard = ({ location, data }) => {
 

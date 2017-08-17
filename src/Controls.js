@@ -43,12 +43,14 @@ export default class Controls extends Component {
   render () {
     return (
       <div className='controls-container'>
-        <h1 className= 'app-title'>Headcount 2.0</h1>
-        <input type="text" placeholder='Enter Data Set To Search'
-        value={this.state.searchInput}
-        onChange={ this.handleChange.bind(this) }/>
-        <button className='submit-btn'
-        onClick={ this.handleSubmit.bind(this) }>Submit</button>
+        <section className='heading-container'>
+          <h1 className= 'app-title'>Headcount 2.0</h1>
+          <input className='search-input' type="text" placeholder='Enter Data Set To Search'
+          value={this.state.searchInput}
+          onChange={ this.handleChange.bind(this) }/>
+          <button className='submit-btn'
+          onClick={ this.handleSubmit.bind(this) }>Submit</button>
+        </section>
       </div>
     )
   }
