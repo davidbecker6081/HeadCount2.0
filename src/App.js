@@ -10,15 +10,21 @@ class App extends Component {
     super()
     this.data = new DistrictRepository(kinderData)
     this.state = {
-      districtList: this.data.findAllMatches('')
+      districtList: this.data.findAllMatches(''),
+      comparison: []
     }
   }
+
+  //push into comparison array when a card is clicked
+  //when comparison array has length of 2, we can run methods to compare averages
 
   populateDistrictList(e) {
     this.setState({
       districtList: this.data.findAllMatches(e.target.value)
     })
   }
+ß
+  //method to account for no matches, run as callback in populateDistrictList
 
   render() {
     return (
