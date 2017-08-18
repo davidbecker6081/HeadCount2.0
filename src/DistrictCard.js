@@ -1,5 +1,6 @@
 import React from 'react';
 import './CssFolder/DistrictCard.css';
+import PropTypes from 'prop-types';
 
 const DistrictCard = ({ location, data }) => {
 
@@ -21,3 +22,22 @@ const DistrictCard = ({ location, data }) => {
 }
 
 export default DistrictCard;
+
+DistrictCard.propTypes = {
+  location: PropTypes.string.isRequired,
+  dataFormat: PropTypes.string.isRequired,
+  data: PropTypes.object.isRequired,
+  data: PropTypes.shape({
+    '2004': PropTypes.number,
+    '2005': PropTypes.number,
+    '2006': PropTypes.number,
+    '2007': PropTypes.number,
+    '2008': PropTypes.number,
+    '2009': PropTypes.number,
+    '2010': PropTypes.number,
+    '2011': PropTypes.number,
+    '2012': PropTypes.number,
+    '2013': PropTypes.number,
+    '2014': PropTypes.number
+  }).isRequired
+}
