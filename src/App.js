@@ -23,7 +23,7 @@ class App extends Component {
       districtList: this.data.findAllMatches(e.target.value)
     })
   }
-ß
+
   //method to account for no matches, run as callback in populateDistrictList
 
   render() {
