@@ -1,5 +1,6 @@
 import React from 'react'
 import './CssFolder/Controls.css';
+import PropTypes from 'prop-types';
 
  const Controls = ({ populateDistrictList }) => {
 
@@ -15,6 +16,12 @@ import './CssFolder/Controls.css';
 }
 
 export default Controls
+
+Controls.propTypes = {
+  populateDistrictList: PropTypes.func.isRequired
+}
+
+
 
 // const dataKeys = {
 //   ThirdGradeTests: '3rd Grade Tests',
