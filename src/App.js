@@ -29,9 +29,15 @@ class App extends Component {
 
   addToComparison(districtName) {
     const districtCard = this.data.findByName(districtName)
+
+    districtCard.hasBeenSelected = true
+
     const newArray = [...this.state.comparison, districtCard]
 
-    if (this.state.comparison.length < 2) {
+    let isDistrictInArray = this.state.comparison.filter((districtCard) => districtCard.location === districtName)
+    console.log(isDistrictInArray)
+
+    if (this.state.comparison.length < 2 && isDistrictInArray.length === 0) {
       this.setState({
         comparison: newArray
       }, this.checkComparisonArray)
@@ -68,7 +74,7 @@ class App extends Component {
             <div className="comparison-container">
               {this.state.comparison.length === 0 &&
                 <p>Add Districts To Compare</p>}
-              <DistrictList districtListArray={this.state.comparison}/>
+              <DistrictList districtListArray={this.state.comparison} addToComparison={this.addToComparison.bind(this)}/>
               {this.state.comparison.length === 1 &&
                   <article className="ghost-card">Add Card</article>}
               {this.state.comparison.length === 2 &&

@@ -6,6 +6,8 @@ import PropTypes from 'prop-types'
 
 const DistrictList = ({ districtListArray, addToComparison, comparisonArray }) => {
 
+//if hasBeenClicked is true give it the .selected and default class, if false, give it default class
+
   const districtCardInstance = districtListArray.map((districtObj, i) =>
       <DistrictCard {...districtObj} addToComparison={addToComparison} comparisonArray={comparisonArray} key={i} />
   )
@@ -15,7 +17,6 @@ const DistrictList = ({ districtListArray, addToComparison, comparisonArray }) =
       {districtCardInstance}
     </div>
   )
-
 }
 
 export default DistrictList
