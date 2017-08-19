@@ -8,15 +8,19 @@ body, html, section, main, div, aside, ul {
   font-family: 'Roboto', sans-serif;
 }
 
-body{
+body {
   background-image: url('http://edfuel.org/wp-content/uploads/2015/09/blueprint2.jpg');
   background-position: center;
   background-size: auto 800px  ;
   background-repeat: repeat;
-
-
   }
 
   .app-title {
     color: #FFF;
+  }
+
+  .app-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
   }

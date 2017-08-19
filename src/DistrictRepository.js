@@ -11,7 +11,8 @@ export default class DistrictRepository {
           location: dataObj['Location'].toUpperCase(),
           dataFormat: dataObj['DataFormat'],
           data: { [dataObj['TimeFrame']]:
-          (Math.round(dataObj['Data'] * 1000)/ 1000) || 0 }
+          (Math.round(dataObj['Data'] * 1000)/ 1000) || 0 },
+          hasBeenSelected: false
         }
       } else {
         newDataObj[dataObj['Location'].toUpperCase()].data[dataObj['TimeFrame']] = (Math.round(dataObj['Data'] * 1000)/ 1000) || 0
