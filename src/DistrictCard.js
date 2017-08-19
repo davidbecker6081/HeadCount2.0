@@ -2,7 +2,7 @@ import React from 'react';
 import './CssFolder/DistrictCard.css';
 import PropTypes from 'prop-types';
 
-const DistrictCard = ({ location, data }) => {
+const DistrictCard = ({ location, data, addToComparison, comparisonArray }) => {
 
   const listItemInstance = Object.keys(data).map((year, i) => {
     let numberClass = data[year] >= 0.5 ? 'card-data aboveFive' : 'card-data belowFive'
@@ -12,7 +12,7 @@ const DistrictCard = ({ location, data }) => {
   })
 
   return (
-    <article>
+    <article onClick={() => addToComparison(location)}>
       <h2 className='card-location'>{location}</h2>
       <ul>
         {listItemInstance}

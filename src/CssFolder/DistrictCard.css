@@ -1,6 +1,7 @@
 * {
   box-sizing: border-box;
 }
+
 body, html, section, main, div, aside {
   margin: 0;
   border: 0;
@@ -20,6 +21,11 @@ article {
 
 article:hover {
   cursor: pointer;
+  color: green;
+}
+
+article.selected {
+  opacity: 0.5;
 }
 
 h2 {

@@ -4,10 +4,10 @@ import './CssFolder/DistrictList.css';
 import PropTypes from 'prop-types'
 
 
-const DistrictList = ({ districtListArray }) => {
+const DistrictList = ({ districtListArray, addToComparison, comparisonArray }) => {
 
   const districtCardInstance = districtListArray.map((districtObj, i) =>
-      <DistrictCard {...districtObj} key={i} />
+      <DistrictCard {...districtObj} addToComparison={addToComparison} comparisonArray={comparisonArray} key={i} />
   )
 
   return (

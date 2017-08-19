@@ -15,9 +15,6 @@ class App extends Component {
     }
   }
 
-  //push into comparison array when a card is clicked
-  //when comparison array has length of 2, we can run methods to compare averages
-
   populateDistrictList(e) {
     this.setState({
       districtList: this.data.findAllMatches(e.target.value)
@@ -26,11 +23,49 @@ class App extends Component {
 
   //method to account for no matches, run as callback in populateDistrictList
 
+  //push into comparison array when a card is clicked
+  //gives method to districtList and then DistrictCard
+  //when comparison array has length of 2, we can run methods to compare averages
+
+  addToComparison(districtName) {
+    const districtCard = this.data.findByName(districtName)
+    const newArray = [...this.state.comparison, districtCard]
+
+    if (this.state.comparison.length < 2) {
+      this.setState({
+        comparison: newArray
+      }, this.checkComparisonArray)
+    }
+  }
+
+  resetComparisonArray() {
+    this.setState({
+      comparison: []
+    })
+  }
+
+  // componentWillUpdate(nextProps, nextState) {
+  //   if( nextProps.count > 5) {
+  //     this.yungheader.style = 'color: purple;'
+  //   }
+  // }
+
   render() {
+
     return (
-      <div>
-        <Controls populateDistrictList={this.populateDistrictList.bind(this)}/>
-        <DistrictList districtListArray={this.state.districtList} />
+        <div className="app-container">
+          <Controls populateDistrictList={this.populateDistrictList.bind(this)}/>
+
+          {this.state.comparison.length === 2 &&
+            <div className="comparison-container">
+              <DistrictList districtListArray={this.state.comparison}/>
+              <button onClick={this.resetComparisonArray.bind(this)}>Clear Comparison</button>
+            </div>
+          }
+
+          <DistrictList
+            districtListArray={this.state.districtList} addToComparison={this.addToComparison.bind(this)}
+            comparisonArray={this.state.comparison}/>
       </div>
     );
   }
