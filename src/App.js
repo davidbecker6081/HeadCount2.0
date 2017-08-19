@@ -27,17 +27,34 @@ class App extends Component {
   addToComparison(districtName) {
     const districtCard = this.data.findByName(districtName)
 
-    districtCard.hasBeenSelected = true
-
-    const newArray = [...this.state.comparison, districtCard]
 
     let isDistrictInArray = this.state.comparison.filter((districtCard) => districtCard.location === districtName)
 
     if (this.state.comparison.length < 2 && isDistrictInArray.length === 0) {
+
+      districtCard.hasBeenSelected = true
+      const newArray = [...this.state.comparison, districtCard]
+
       this.setState({
         comparison: newArray
-      }, this.checkComparisonArray)
+      })
     }
+  }
+
+  removeFromComparisonArray(districtName) {
+    //get the card object
+    const districtCard = this.data.findByName(districtName)
+
+    //set the card objects hasBeenSelected to false
+    districtCard.hasBeenSelected = false
+    //remove card from comparison array
+    const newArray = this.state.comparison.filter((districtObj) => districtObj.location !== districtName)
+
+    console.log(newArray);
+
+    this.setState({
+      comparison: newArray
+    })
   }
 
   resetComparisonArray() {
@@ -70,7 +87,8 @@ class App extends Component {
                   <p>Add Districts To Compare</p>}
 
                   <DistrictList districtListArray={this.state.comparison} addToComparison={this.addToComparison.bind(this)} districtRepo={this.data}
-                  comparisonArray={this.state.comparison} />
+                  comparisonArray={this.state.comparison}
+                  removeFromComparisonArray={this.removeFromComparisonArray.bind(this)}/>
 
               </div>
 
@@ -87,7 +105,8 @@ class App extends Component {
           <DistrictList
             districtListArray={this.state.districtList} addToComparison={this.addToComparison.bind(this)}
             comparisonArray={this.state.comparison}
-            districtRepo={this.data}/>
+            districtRepo={this.data}
+            removeFromComparisonArray={this.removeFromComparisonArray.bind(this)}/>
       </div>
     );
   }

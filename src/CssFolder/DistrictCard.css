@@ -26,7 +26,7 @@ article:hover {
 }
 
 article.selected {
-  opacity: 0.5;
+  background-color: purple;
 }
 
 article.ghost-card {
