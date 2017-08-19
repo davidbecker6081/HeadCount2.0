@@ -4,6 +4,7 @@ import Controls from './Controls' ;
 import DistrictList from'./DistrictList';
 import kinderData from '../data/kindergartners_in_full_day_program.js';
 import DistrictRepository from './DistrictRepository'
+import Comparison from './Comparison'
 
 class App extends Component {
   constructor() {
@@ -23,10 +24,6 @@ class App extends Component {
 
   //method to account for no matches, run as callback in populateDistrictList
 
-  //push into comparison array when a card is clicked
-  //gives method to districtList and then DistrictCard
-  //when comparison array has length of 2, we can run methods to compare averages
-
   addToComparison(districtName) {
     const districtCard = this.data.findByName(districtName)
 
@@ -35,7 +32,6 @@ class App extends Component {
     const newArray = [...this.state.comparison, districtCard]
 
     let isDistrictInArray = this.state.comparison.filter((districtCard) => districtCard.location === districtName)
-    console.log(isDistrictInArray)
 
     if (this.state.comparison.length < 2 && isDistrictInArray.length === 0) {
       this.setState({
@@ -60,13 +56,6 @@ class App extends Component {
 
 //if comparisonArray has length of 2, then only the two cards in the array should be able to be toggled off (and no other card should be clickable)
 
-  // componentWillUpdate(nextProps, nextState) {
-  //   if( nextProps.count > 5) {
-  //     this.yungheader.style = 'color: purple;'
-  //   }
-  // }
-
-
   render() {
 
     return (
@@ -75,19 +64,30 @@ class App extends Component {
 
           {this.state.comparison.length <= 2 &&
             <div className="comparison-container">
-              {this.state.comparison.length === 0 &&
-                <p>Add Districts To Compare</p>}
-              <DistrictList districtListArray={this.state.comparison} addToComparison={this.addToComparison.bind(this)}/>
-              {this.state.comparison.length === 1 &&
-                  <article className="ghost-card">Add Card</article>}
+
+              <div className="comparison-wrapper">
+                {this.state.comparison.length === 0 &&
+                  <p>Add Districts To Compare</p>}
+
+                  <DistrictList districtListArray={this.state.comparison} addToComparison={this.addToComparison.bind(this)} districtRepo={this.data}
+                  comparisonArray={this.state.comparison} />
+
+              </div>
+
               {this.state.comparison.length === 2 &&
-                <button onClick={this.resetComparisonArray.bind(this)}>Clear Comparison</button>}
+                <div className="comparison-component-btn">
+                  <Comparison comparisonArray={this.state.comparison} districtRepo={this.data} />
+                  <button onClick={this.resetComparisonArray.bind(this)}>Clear Comparison</button>
+                </div>
+              }
+
             </div>
           }
 
           <DistrictList
             districtListArray={this.state.districtList} addToComparison={this.addToComparison.bind(this)}
-            comparisonArray={this.state.comparison}/>
+            comparisonArray={this.state.comparison}
+            districtRepo={this.data}/>
       </div>
     );
   }

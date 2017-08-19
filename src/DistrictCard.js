@@ -2,7 +2,7 @@ import React from 'react';
 import './CssFolder/DistrictCard.css';
 import PropTypes from 'prop-types';
 
-const DistrictCard = ({ location, data, addToComparison, comparisonArray }) => {
+const DistrictCard = ({ location, data, addToComparison, districtRepoClass }) => {
 
   const listItemInstance = Object.keys(data).map((year, i) => {
     let numberClass = data[year] >= 0.5 ? 'card-data aboveFive' : 'card-data belowFive'
@@ -11,15 +11,19 @@ const DistrictCard = ({ location, data, addToComparison, comparisonArray }) => {
       )
   })
 
-  //if comparisonArray is length of two, 
+  const districtAverage = districtRepoClass.findAverage(location)
+
+
+  //if comparisonArray is length of two,
 
   return (
-    <article onClick={() => addToComparison(location)}>
-      <h2 className='card-location'>{location}</h2>
-      <ul>
-        {listItemInstance}
-      </ul>
-    </article>
+      <article onClick={() => addToComparison(location)}>
+        <h2 className='card-location'>{location}</h2>
+        <ul>
+          {listItemInstance}
+        </ul>
+        District Average: {districtAverage}
+      </article>
   )
 }
 

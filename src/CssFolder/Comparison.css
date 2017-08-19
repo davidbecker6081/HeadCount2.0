@@ -1,0 +1,57 @@
+.comparison-container {
+  display: flex;
+  flex-direction: column;
+  width: 75%;
+  background-color: rgba(255, 255, 255, 0.5);
+  box-shadow: 3px 3px 3px #2D2D2A;
+  border-radius: 10px;
+}
+
+.comparison-container p {
+  width: 100%;
+  font-size: 60px;
+}
+
+.comparison-wrapper {
+  display: flex;
+  flex-direction: row;
+  height: 420px;
+  width: 100%;
+}
+
+.comparison-component-btn {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.comparison-card {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-bottom: 15px;
+  width: 525px;
+  font-size: 13px;
+  background: rgba(204, 219, 220, .7);
+  border-radius: 10px;
+  box-shadow: 3px 3px 3px #2D2D2A;
+}
+
+.comparison-card div {
+  margin: 10px;
+}
+
+.comparison-component-btn button {
+  margin-bottom: 20px;
+  padding: 10px 30px;
+  font-size: 16px;
+  border: none;
+  border-radius: 10px;
+  background-color: #FFF;
+}
+
+.comparison-component-btn button:hover {
+  cursor: pointer;
+  background-color: rgba(204, 219, 220, .7);
+}

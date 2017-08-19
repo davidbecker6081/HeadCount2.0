@@ -10,7 +10,8 @@ body, html, section, main, div, aside {
 }
 
 article {
-  height: 300px;
+  padding-bottom: 10px;
+  height: 320px;
   width: 250px;
   background: rgba(204, 219, 220, .7);
   margin: 10px;
@@ -29,7 +30,10 @@ article.selected {
 }
 
 article.ghost-card {
-  opacity: 0.3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 40px;
 }
 
 article.ghost-card:hover {
