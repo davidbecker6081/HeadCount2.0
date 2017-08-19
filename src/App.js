@@ -45,6 +45,8 @@ class App extends Component {
   }
 
   resetComparisonArray() {
+    this.state.comparison.map((districtObj) => districtObj.hasBeenSelected = false)
+
     this.setState({
       comparison: []
     })
@@ -63,6 +65,7 @@ class App extends Component {
   //     this.yungheader.style = 'color: purple;'
   //   }
   // }
+
 
   render() {
 
