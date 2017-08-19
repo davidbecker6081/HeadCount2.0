@@ -82,14 +82,12 @@ class App extends Component {
           {this.state.comparison.length <= 2 &&
             <div className="comparison-container">
 
+              {this.state.comparison.length < 2 &&
+                <p>Add Two Districts To Compare</p>}
+
               <div className="comparison-wrapper">
-                {this.state.comparison.length === 0 &&
-                  <p>Add Districts To Compare</p>}
-
                   <DistrictList districtListArray={this.state.comparison} addToComparison={this.addToComparison.bind(this)} districtRepo={this.data}
-                  comparisonArray={this.state.comparison}
                   removeFromComparisonArray={this.removeFromComparisonArray.bind(this)}/>
-
               </div>
 
               {this.state.comparison.length === 2 &&
@@ -104,7 +102,6 @@ class App extends Component {
 
           <DistrictList
             districtListArray={this.state.districtList} addToComparison={this.addToComparison.bind(this)}
-            comparisonArray={this.state.comparison}
             districtRepo={this.data}
             removeFromComparisonArray={this.removeFromComparisonArray.bind(this)}/>
       </div>

@@ -4,7 +4,7 @@ import './CssFolder/DistrictList.css';
 import PropTypes from 'prop-types'
 
 
-const DistrictList = ({ districtListArray, addToComparison, comparisonArray, districtRepo, removeFromComparisonArray }) => {
+const DistrictList = ({ districtListArray, addToComparison, districtRepo, removeFromComparisonArray }) => {
 
   const districtCardInstance = districtListArray.map((districtObj, i) =>
       <DistrictCard {...districtObj} addToComparison={addToComparison}  districtRepoClass={districtRepo} removeFromComparisonArray={removeFromComparisonArray} key={i} />
@@ -13,8 +13,6 @@ const DistrictList = ({ districtListArray, addToComparison, comparisonArray, dis
   return (
     <div className='card-container'>
       {districtCardInstance}
-      {comparisonArray.length === 1 &&
-        <article className="ghost-card">Add Card</article>}
     </div>
   )
 }

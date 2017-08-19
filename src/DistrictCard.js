@@ -27,7 +27,8 @@ const DistrictCard = ({ location, data, addToComparison, districtRepoClass, hasB
         <ul>
           {listItemInstance}
         </ul>
-        District Average: {districtAverage}
+        {hasBeenSelected &&
+          <div>District Average: {districtAverage}</div>}
         <button onClick={buttonAction}>{buttonText}</button>
       </article>
   )
