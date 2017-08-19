@@ -16,3 +16,16 @@ body, html, section, main, div, aside {
   flex-wrap: wrap;
   justify-content: center;
 }
+
+.comparison-container {
+  height: 400px;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.comparison-container p {
+  width: 100%;
+  font-size: 50px;
+}

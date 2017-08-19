@@ -11,6 +11,8 @@ const DistrictCard = ({ location, data, addToComparison, comparisonArray }) => {
       )
   })
 
+  //if comparisonArray is length of two, 
+
   return (
     <article onClick={() => addToComparison(location)}>
       <h2 className='card-location'>{location}</h2>

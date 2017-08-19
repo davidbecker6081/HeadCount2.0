@@ -44,6 +44,14 @@ class App extends Component {
     })
   }
 
+//if there is nothing in the comparison array, we can toggle hasBeenSelected on or off
+
+//if hasbeen selected is true on the card, toggle class off and remove card from array
+
+//if hasBeenSelected is false and the length of the comparisonArray is not equal to 2, then hasBeenSelected can be set to true, and toggle class on
+
+//if comparisonArray has length of 2, then only the two cards in the array should be able to be toggled off (and no other card should be clickable)
+
   // componentWillUpdate(nextProps, nextState) {
   //   if( nextProps.count > 5) {
   //     this.yungheader.style = 'color: purple;'
@@ -56,10 +64,15 @@ class App extends Component {
         <div className="app-container">
           <Controls populateDistrictList={this.populateDistrictList.bind(this)}/>
 
-          {this.state.comparison.length === 2 &&
+          {this.state.comparison.length <= 2 &&
             <div className="comparison-container">
+              {this.state.comparison.length === 0 &&
+                <p>Add Districts To Compare</p>}
               <DistrictList districtListArray={this.state.comparison}/>
-              <button onClick={this.resetComparisonArray.bind(this)}>Clear Comparison</button>
+              {this.state.comparison.length === 1 &&
+                  <article className="ghost-card">Add Card</article>}
+              {this.state.comparison.length === 2 &&
+                <button onClick={this.resetComparisonArray.bind(this)}>Clear Comparison</button>}
             </div>
           }
 
