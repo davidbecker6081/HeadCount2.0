@@ -93,7 +93,7 @@ class App extends Component {
               {this.state.comparison.length === 2 &&
                 <div className="comparison-component-btn">
                   <Comparison comparisonArray={this.state.comparison} districtRepo={this.data} />
-                  <button onClick={this.resetComparisonArray.bind(this)}>Clear Comparison</button>
+                  <button className="clear-comparison-btn" onClick={this.resetComparisonArray.bind(this)}>Clear Comparison</button>
                 </div>
               }
 
