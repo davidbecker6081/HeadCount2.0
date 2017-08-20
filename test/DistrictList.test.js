@@ -2,13 +2,21 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import DistrictList from '../src/DistrictList';
 import DistrictCard from '../src/DistrictCard'
+import DistrictRepository from '../src/DistrictRepository'
+import kinderData from '../data/kindergartners_in_full_day_program.js';
 import { mount, shallow } from 'enzyme'
 
 describe('DistrictList', () => {
   let wrapper
   let districtListArray
+  let addToComparisonMock
+  let removeFromComparisonArrayMock
+  let districtRepo
 
   beforeEach(() => {
+    addToComparisonMock = jest.fn()
+    removeFromComparisonArrayMock = jest.fn()
+    districtRepo = new DistrictRepository(kinderData)
     districtListArray = [
       { location: 'COLORADO',
         dataFormat: 'Percent',
@@ -42,7 +50,7 @@ describe('DistrictList', () => {
         '2014': 0.627 }
       }
     ]
-    wrapper = shallow(<DistrictList districtListArray={districtListArray} />)
+    wrapper = shallow(<DistrictList districtListArray={districtListArray} addToComparison={addToComparisonMock} removeFromComparisonArray={removeFromComparisonArrayMock} districtRepo={districtRepo}/>)
   })
 
   it('should exist', () => {
