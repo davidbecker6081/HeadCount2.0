@@ -50,8 +50,6 @@ class App extends Component {
     //remove card from comparison array
     const newArray = this.state.comparison.filter((districtObj) => districtObj.location !== districtName)
 
-    console.log(newArray);
-
     this.setState({
       comparison: newArray
     })
@@ -64,14 +62,6 @@ class App extends Component {
       comparison: []
     })
   }
-
-//if there is nothing in the comparison array, we can toggle hasBeenSelected on or off
-
-//if hasbeen selected is true on the card, toggle class off and remove card from array
-
-//if hasBeenSelected is false and the length of the comparisonArray is not equal to 2, then hasBeenSelected can be set to true, and toggle class on
-
-//if comparisonArray has length of 2, then only the two cards in the array should be able to be toggled off (and no other card should be clickable)
 
   render() {
 

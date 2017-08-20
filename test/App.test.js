@@ -4,6 +4,7 @@ import App from '../src/App';
 import { mount, shallow } from 'enzyme'
 import Controls from '../src/Controls'
 import DistrictList from '../src/DistrictList'
+import DistrictCard from '../src/DistrictCard'
 import DistrictRepository from '../src/DistrictRepository'
 import kinderData from '../data/kindergartners_in_full_day_program.js';
 import Comparison from '../src/Comparison'
@@ -13,9 +14,47 @@ describe('App', () => {
 
   let wrapper
   let district
+  let district1
+  let district2
 
   beforeEach(() => {
     district = new DistrictRepository(kinderData)
+
+    district1 = { location: 'COLORADO',
+      dataFormat: 'Percent',
+      data: {
+      '2004': 0.333,
+      '2005': 0.175,
+      '2006': 0.17,
+      '2007': 0.255,
+      '2008': 0.275,
+      '2009': 0.45,
+      '2010': 0.367,
+      '2011': 0.327,
+      '2012': 0.427,
+      '2013': 0.227,
+      '2014': 0.527 },
+      hasBeenSelected: false
+    }
+
+    district2 = {
+      location: 'ACADEMY 20',
+      dataFormat: 'Percent',
+      data: {
+      '2004': 0.333,
+      '2005': 0.135,
+      '2006': 0.17,
+      '2007': 0.5,
+      '2008': 0.275,
+      '2009': 0.45,
+      '2010': 0.367,
+      '2011': 0.367,
+      '2012': 0.427,
+      '2013': 0.227,
+      '2014': 0.627 },
+      hasBeenSelected: false
+    }
+
     wrapper = mount(<App data={ district } />)
   })
 
@@ -61,38 +100,6 @@ describe('App', () => {
   })
 
   it('should render a Comparison component and button if comparison array length is equal to 2', () => {
-    const district1 = { location: 'COLORADO',
-      dataFormat: 'Percent',
-      data: {
-      '2004': 0.333,
-      '2005': 0.175,
-      '2006': 0.17,
-      '2007': 0.255,
-      '2008': 0.275,
-      '2009': 0.45,
-      '2010': 0.367,
-      '2011': 0.327,
-      '2012': 0.427,
-      '2013': 0.227,
-      '2014': 0.527 }
-    }
-    const district2 = {
-      location: 'ACADEMY 20',
-      dataFormat: 'Percent',
-      data: {
-      '2004': 0.333,
-      '2005': 0.135,
-      '2006': 0.17,
-      '2007': 0.5,
-      '2008': 0.275,
-      '2009': 0.45,
-      '2010': 0.367,
-      '2011': 0.367,
-      '2012': 0.427,
-      '2013': 0.227,
-      '2014': 0.627 }
-    }
-
     expect(wrapper.find('.comparison-component-btn').exists()).toEqual(false)
     expect(wrapper.find(Comparison).exists()).toEqual(false)
     expect(wrapper.find('.clear-comparison-btn').exists()).toEqual(false)
@@ -107,40 +114,6 @@ describe('App', () => {
   })
 
   it('should reset comparison array to 0 and hasBeenSelected property to false if the Clear Comparison button is clicked', () => {
-    const district1 = { location: 'COLORADO',
-      dataFormat: 'Percent',
-      data: {
-      '2004': 0.333,
-      '2005': 0.175,
-      '2006': 0.17,
-      '2007': 0.255,
-      '2008': 0.275,
-      '2009': 0.45,
-      '2010': 0.367,
-      '2011': 0.327,
-      '2012': 0.427,
-      '2013': 0.227,
-      '2014': 0.527 },
-      hasBeenSelected: false
-    }
-    const district2 = {
-      location: 'ACADEMY 20',
-      dataFormat: 'Percent',
-      data: {
-      '2004': 0.333,
-      '2005': 0.135,
-      '2006': 0.17,
-      '2007': 0.5,
-      '2008': 0.275,
-      '2009': 0.45,
-      '2010': 0.367,
-      '2011': 0.367,
-      '2012': 0.427,
-      '2013': 0.227,
-      '2014': 0.627 },
-      hasBeenSelected: false
-    }
-
     district1.hasBeenSelected = true
     district2.hasBeenSelected = true
     wrapper.state().comparison.push(district1)
@@ -166,20 +139,84 @@ describe('App', () => {
     expect(wrapper.state().districtList.length).toEqual(2)
   })
 
-  it('should add a district to the comparison array when selected', () => {
+  it('should add a district to the comparison array', () => {
+    expect(wrapper.state().comparison.length).toEqual(0)
 
+    wrapper.instance().addToComparison(district1.location)
+    expect(wrapper.state().comparison.length).toEqual(1)
+
+    wrapper.instance().addToComparison(district2.location)
+    expect(wrapper.state().comparison.length).toEqual(2)
   })
 
-  it('should remove a district from the comparison array de-selected', () => {
+  it('should remove a district from the comparison array ', () => {
+    wrapper.instance().addToComparison(district1.location)
+    wrapper.instance().addToComparison(district2.location)
 
+    expect(wrapper.state().comparison.length).toEqual(2)
+
+    wrapper.instance().removeFromComparisonArray(district1.location)
+    expect(wrapper.state().comparison.length).toEqual(1)
+
+    wrapper.instance().removeFromComparisonArray(district2.location)
+    expect(wrapper.state().comparison.length).toEqual(0)
   })
 
-  it('should not add a district to the comparison array when two districts are selected', () => {
+  it('should not add a district card twice into comparison array', () => {
+    wrapper.instance().addToComparison(district1.location)
+    expect(wrapper.state().comparison.length).toEqual(1)
 
+    wrapper.instance().addToComparison(district1.location)
+    expect(wrapper.state().comparison.length).toEqual(1)
+  })
+
+  it('should not add a district to the comparison array when two districts are already selected', () => {
+    const district3 = {
+      location: 'ANOTHER DISTRICT',
+      dataFormat: 'Percent',
+      data: {
+      '2004': 0.333,
+      '2005': 0.135,
+      '2006': 0.17,
+      '2007': 0.5,
+      '2008': 0.275,
+      '2009': 0.45,
+      '2010': 0.367,
+      '2011': 0.367,
+      '2012': 0.427,
+      '2013': 0.227,
+      '2014': 0.627 },
+      hasBeenSelected: false
+    }
+
+    wrapper.instance().addToComparison(district1.location)
+    wrapper.instance().addToComparison(district2.location)
+
+    expect(wrapper.state().comparison.length).toEqual(2)
+
+    wrapper.instance().addToComparison(district3.location)
+
+    expect(wrapper.state().comparison.length).toEqual(2)
   })
 
   it('should be able to reset the comparison array', () => {
+    wrapper.instance().addToComparison(district1.location)
+    wrapper.instance().addToComparison(district2.location)
 
+    expect(wrapper.state().comparison.length).toEqual(2)
+
+    wrapper.instance().resetComparisonArray()
+
+    expect(wrapper.state().comparison.length).toEqual(0)
+  })
+
+  it('should render the correct cards from comparison array', () => {
+    wrapper.instance().addToComparison(district1.location)
+    wrapper.instance().addToComparison(district2.location)
+    wrapper.update()
+
+    expect(wrapper.find(DistrictCard).first().find('h2').at(0).text()).toEqual('COLORADO')
+    expect(wrapper.find(DistrictCard).find('h2').at(1).text()).toEqual('ACADEMY 20')
   })
 
 })
