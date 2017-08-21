@@ -23,8 +23,6 @@ class App extends Component {
     })
   }
 
-  //method to account for no matches, run as callback in populateDistrictList
-
   addToComparison(districtName) {
     const districtCard = this.data.findByName(districtName)
 
@@ -43,12 +41,10 @@ class App extends Component {
   }
 
   removeFromComparisonArray(districtName) {
-    //get the card object
     const districtCard = this.data.findByName(districtName)
 
-    //set the card objects hasBeenSelected to false
     districtCard.hasBeenSelected = false
-    //remove card from comparison array
+
     const newArray = this.state.comparison.filter((districtObj) => districtObj.location !== districtName)
 
     this.setState({
@@ -68,7 +64,8 @@ class App extends Component {
 
     return (
         <div className="app-container">
-          <Controls populateDistrictList={this.populateDistrictList.bind(this)}/>
+          <Controls
+            populateDistrictList={this.populateDistrictList.bind(this)}/>
 
           {this.state.comparison.length <= 2 &&
             <div className="comparison-container">
@@ -77,17 +74,17 @@ class App extends Component {
                 <p className="comparison-text">Add Two Districts To Compare</p>}
 
               <div className="comparison-wrapper">
-
                   <DistrictList
-                   districtListArray={this.state.comparison} addToComparison={this.addToComparison.bind(this)} districtRepo={this.data}
-                  removeFromComparisonArray={this.removeFromComparisonArray.bind(this)}/>
-
+                    districtListArray={this.state.comparison} addToComparison={this.addToComparison.bind(this)} districtRepo={this.data}
+                    removeFromComparisonArray={this.removeFromComparisonArray.bind(this)}
+                    comparisonArray={this.state.comparison} />
               </div>
 
               {this.state.comparison.length === 2 &&
                 <div className="comparison-component-btn">
-                  <Comparison comparisonArray={this.state.comparison} districtRepo={this.data} />
-                  <button className='clear-comparison-btn' onClick={this.resetComparisonArray.bind(this)}>Clear Comparison</button>
+                  <Comparison
+                    comparisonArray={this.state.comparison} districtRepo={this.data} />
+                  <button className="clear-comparison-btn" onClick={this.resetComparisonArray.bind(this)}>Clear Comparison</button>
                 </div>
               }
 
@@ -97,7 +94,8 @@ class App extends Component {
           <DistrictList
             districtListArray={this.state.districtList} addToComparison={this.addToComparison.bind(this)}
             districtRepo={this.data}
-            removeFromComparisonArray={this.removeFromComparisonArray.bind(this)}/>
+            removeFromComparisonArray={this.removeFromComparisonArray.bind(this)}
+            comparisonArray={this.state.comparison}/>
       </div>
     );
   }

@@ -17,7 +17,7 @@ const Comparison = ({ comparisonArray, districtRepo }) => {
         {district1} Average: {comparisonObj[district1]}
       </div>
       <div>
-      Compared: {comparisonObj.compared}
+        Compared: {comparisonObj.compared}
       </div>
       <div>
         {district2} Average: {comparisonObj[district2]}
@@ -28,3 +28,10 @@ const Comparison = ({ comparisonArray, districtRepo }) => {
 }
 
 export default Comparison
+
+Comparison.propTypes = {
+  comparisonArray: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
+  districtRepo: PropTypes.shape({
+    data: PropTypes.object.isRequired
+  })
+}

@@ -3,24 +3,22 @@ import './CssFolder/DistrictCard.css';
 import PropTypes from 'prop-types';
 import FadeIn from 'react-fade-in';
 
-const DistrictCard = ({ location, data, addToComparison, districtRepoClass, hasBeenSelected, removeFromComparisonArray }) => {
+const DistrictCard = ({ location, data, addToComparison, districtRepoClass, hasBeenSelected, removeFromComparisonArray, comparisonArray }) => {
+
+  const districtAverage = districtRepoClass.findAverage(location)
+  let selected = hasBeenSelected ? 'selected default-card' : 'default-card'
+  let buttonText = hasBeenSelected ? 'Remove' : 'Add'
+  let buttonAction = hasBeenSelected ?
+                                    () => removeFromComparisonArray(location)
+                                    : () => addToComparison(location)
+  let isDisabled = comparisonArray.length === 2 && !hasBeenSelected ? true : false
 
   const listItemInstance = Object.keys(data).map((year, i) => {
     let numberClass = data[year] >= 0.5 ? 'card-data aboveFive' : 'card-data belowFive'
       return (
-      <li className={numberClass} key={i}>{year}: {data[year]}</li>
+        <li className={numberClass} key={i}>{year}: {data[year]}</li>
       )
   })
-
-  const districtAverage = districtRepoClass.findAverage(location)
-
-  //if hasBeenClicked is true give it the .selected and default class, if false, give it default class
-  let selected = hasBeenSelected ? 'selected default-card' : 'default-card'
-  //if comparisonArray is length of two,
-  let buttonText = hasBeenSelected ? 'Remove' : 'Add'
-  let buttonAction = hasBeenSelected ?
-                          () => removeFromComparisonArray(location)
-                          : () => addToComparison(location)
 
   return (
     <FadeIn>
@@ -31,8 +29,7 @@ const DistrictCard = ({ location, data, addToComparison, districtRepoClass, hasB
         </ul>
         {hasBeenSelected &&
           <div>District Average: {districtAverage}</div>}
-        <button className="card-btn" onClick={buttonAction}>{buttonText}</button>
-
+        <button disabled={isDisabled} className="card-btn" onClick={buttonAction}>{buttonText}</button>
       </article>
       </FadeIn>
   )
@@ -56,5 +53,12 @@ DistrictCard.propTypes = {
     '2012': PropTypes.number,
     '2013': PropTypes.number,
     '2014': PropTypes.number
-  }).isRequired
+  }).isRequired,
+  hasBeenSelected: PropTypes.bool.isRequired,
+  addToComparison: PropTypes.func.isRequired,
+  districtRepoClass: PropTypes.shape({
+    data: PropTypes.object.isRequired
+  }),
+  removeFromComparisonArray: PropTypes.func.isRequired,
+  comparisonArray: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired
 }

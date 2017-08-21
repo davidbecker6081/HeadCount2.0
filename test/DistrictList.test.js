@@ -12,6 +12,7 @@ describe('DistrictList', () => {
   let addToComparisonMock
   let removeFromComparisonArrayMock
   let districtRepo
+  let comparisonArray
 
   beforeEach(() => {
     addToComparisonMock = jest.fn()
@@ -31,7 +32,8 @@ describe('DistrictList', () => {
         '2011': 0.327,
         '2012': 0.427,
         '2013': 0.227,
-        '2014': 0.527 }
+        '2014': 0.527 },
+        hasBeenSelected: false
       },
       {
         location: 'ACADEMY 20',
@@ -47,10 +49,46 @@ describe('DistrictList', () => {
         '2011': 0.367,
         '2012': 0.427,
         '2013': 0.227,
-        '2014': 0.627 }
+        '2014': 0.627 },
+        hasBeenSelected: false
       }
     ]
-    wrapper = shallow(<DistrictList districtListArray={districtListArray} addToComparison={addToComparisonMock} removeFromComparisonArray={removeFromComparisonArrayMock} districtRepo={districtRepo}/>)
+    comparisonArray = [
+      { location: 'COLORADO',
+        dataFormat: 'Percent',
+        data: {
+        '2004': 0.333,
+        '2005': 0.175,
+        '2006': 0.17,
+        '2007': 0.255,
+        '2008': 0.275,
+        '2009': 0.45,
+        '2010': 0.367,
+        '2011': 0.327,
+        '2012': 0.427,
+        '2013': 0.227,
+        '2014': 0.527 },
+        hasBeenSelected: true
+      },
+      {
+        location: 'ACADEMY 20',
+        dataFormat: 'Percent',
+        data: {
+        '2004': 0.333,
+        '2005': 0.135,
+        '2006': 0.17,
+        '2007': 0.5,
+        '2008': 0.275,
+        '2009': 0.45,
+        '2010': 0.367,
+        '2011': 0.367,
+        '2012': 0.427,
+        '2013': 0.227,
+        '2014': 0.627 },
+        hasBeenSelected: true
+      }
+    ]
+    wrapper = shallow(<DistrictList districtListArray={districtListArray} addToComparison={addToComparisonMock} removeFromComparisonArray={removeFromComparisonArrayMock} districtRepo={districtRepo} comparisonArray={comparisonArray}/>)
   })
 
   it('should exist', () => {

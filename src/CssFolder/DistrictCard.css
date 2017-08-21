@@ -37,6 +37,10 @@ li {
   margin: 3px 0px;
 }
 
+article button:disabled {
+  background-color: red;
+}
+
 .belowFive {
   color: #CC0000;
 }
