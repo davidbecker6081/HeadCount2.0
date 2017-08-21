@@ -1,12 +1,23 @@
 # HeadCount 2.0
 
-HeadCount 2.0 is a project designed to challenge your skills at manipulating data and creating small, reusable React components.  
+
+## Overview
+
+HeadCount 2.0 is the firs paired project for Front End Mod 3.  This project was built using React emphasizing Test Driven Development.  The district repository was first created using the provided school data.  This functionality was built using some supplied tests as well as newly created tests and served as the foundation of the project.  Over the course of Five iterations a full app was created in order to satisfy the requirements.  The concept behind the application was to be able to store data on a "card" to be displayed on the dom.  As the cards are selected they tally averages using functionality built in the DistrictRepository.  The selected items are then displayed in a separate container which then are compared against each other.  
+
+
+![User Interface](http://i.imgur.com/gEhPt4l.png)
+
+
+### Original Project Requirements 
+
+<!-- HeadCount 2.0 is a project designed to challenge your skills at manipulating data and creating small, reusable React components.  
 
 You will start the project by importing files containing various educational stats from districts within Colorado by year, per district.  
 
 In the spirit of TDD we have created some unit tests for you to start off with. These tests will help you break out calculation logic into a `DistrictRepository` class. After you finish `iteration 1` you'll move on to creating the rest of the react application on your own, with the expectation that you will continue to test the application on your own.
 
-This application was built using the `create-react-app` boilerplate. This boilerplate provides a lot of build in content and dependencies for free. Take a few minutes to read through [the documentation](https://github.com/facebookincubator/create-react-app), and remember to refer back to these docs if you run into unexpected issues.  
+This application was built using the `create-react-app` boilerplate. This boilerplate provides a lot of build in content and dependencies for free. Take a few minutes to read through [the documentation](https://github.com/facebookincubator/create-react-app), and remember to refer back to these docs if you run into unexpected issues.   -->
 
 ## Set Up
 

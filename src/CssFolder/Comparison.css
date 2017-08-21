@@ -1,43 +1,54 @@
+* {
+  box-sizing: border-box;
+}
+body, html, section, main, div, aside {
+  margin: 0;
+  border: 0;
+  padding: 0;
+  font-family: 'Anton', sans-serif;  ;
+}
+
 .comparison-container {
+  background: rgba(204, 219, 220, .7);
+  border-radius: 10px;
+  box-shadow: 3px 3px 3px #2D2D2A;
   display: flex;
   flex-direction: column;
   width: 75%;
-  background-color: rgba(255, 255, 255, 0.5);
-  box-shadow: 3px 3px 3px #2D2D2A;
-  border-radius: 10px;
 }
 
 .comparison-container p {
-  margin: 20px 0;
-  width: 100%;
+  color: #FFF;
   font-size: 50px;
+  margin: 20px 0;
   text-align: center;
+  text-shadow: 2px 2px #2D2D2A;
+  width: 100%;
 }
 
 .comparison-wrapper {
   display: flex;
   flex-direction: row;
-  height: 420px;
   width: 100%;
 }
 
 .comparison-component-btn {
-  display: flex;
   align-items: center;
+  display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
 .comparison-card {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  margin-bottom: 15px;
-  width: 525px;
-  font-size: 13px;
   background: rgba(204, 219, 220, .7);
   border-radius: 10px;
   box-shadow: 3px 3px 3px #2D2D2A;
+  display: flex;
+  flex-direction: row;
+  font-size: 13px;
+  justify-content: center;
+  margin-bottom: 15px;
+  width: 525px;
 }
 
 .comparison-card div {
@@ -45,15 +56,52 @@
 }
 
 .comparison-component-btn button {
+  background-color: #FFF;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 2px 2px 2px #2D2D2A;
   margin-bottom: 20px;
   padding: 10px 30px;
   font-size: 16px;
-  border: none;
-  border-radius: 10px;
-  background-color: #FFF;
+  width: 250px;
 }
 
 .comparison-component-btn button:hover {
   cursor: pointer;
-  background-color: rgba(204, 219, 220, .7);
+	transition-property: transform;
+	transform: scale(1.1);
+}
+
+@media screen and (max-width: 900px) {
+  .comparison-container p {
+    font-size: 32px;
+  }
+}
+
+@media screen and (max-width: 725px) {
+  .comparison-card {
+    height: 150px;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    width: 250px;
+  }
+}
+
+@media screen and (max-width: 630px) {
+  .comparison-container p {
+    font-size: 20px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .comparison-card, .comparison-component-btn button {
+    width: 200px
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .comparison-container p {
+    font-size: 16px;
+  }
 }

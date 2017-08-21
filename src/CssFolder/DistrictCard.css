@@ -1,6 +1,7 @@
 * {
   box-sizing: border-box;
 }
+font-family: 'Anton', sans-serif;
 
 body, html, section, main, div, aside {
   margin: 0;
@@ -10,41 +11,25 @@ body, html, section, main, div, aside {
 }
 
 article {
-  padding-bottom: 10px;
-  height: 320px;
-  width: 250px;
   background: rgba(204, 219, 220, .7);
-  margin: 10px;
   border-radius: 10px;
-  text-align: center;
   box-shadow: 3px 3px 3px #2D2D2A;
-}
-
-article:hover {
-  cursor: pointer;
-  color: green;
+  height: 340px;
+  margin: 10px;
+  padding-bottom: 10px;
+  text-align: center;
+  width: 250px;
 }
 
 article.selected {
-  background-color: purple;
-}
-
-article.ghost-card {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 40px;
-}
-
-article.ghost-card:hover {
-  cursor: default;
-  color: black;
+  border-color: red;
+  box-shadow: 0 0 20px red;
 }
 
 h2 {
-  font-size: 16px;
   border-bottom: 2px solid #000;
-  padding-bottom: 5px;
+  font-size: 16px;
+  padding: 15px 0 5px;
 }
 
 li {
@@ -55,3 +40,29 @@ li {
 article button:disabled {
   background-color: red;
 }
+
+.belowFive {
+  color: #CC0000;
+}
+
+.card-btn {
+  background: #FFF;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 2px 2px 2px #2D2D2A;
+  margin-top: 10px;
+  outline: none;
+  width: 150px;
+}
+
+.card-btn:hover {
+  cursor: pointer;
+	transform: scale(1.1);
+  transition-property: transform;
+}
+
+  @media screen and (max-width: 400px) {
+    article {
+      width: 200px
+    }
+  }

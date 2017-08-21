@@ -1,6 +1,7 @@
 import React from 'react';
 import './CssFolder/Comparison.css';
 import PropTypes from 'prop-types';
+import FadeIn from 'react-fade-in';
 
 const Comparison = ({ comparisonArray, districtRepo }) => {
 
@@ -11,6 +12,7 @@ const Comparison = ({ comparisonArray, districtRepo }) => {
 
   return (
     <section className="comparison-card">
+    <FadeIn>
       <div>
         {district1} Average: {comparisonObj[district1]}
       </div>
@@ -20,6 +22,7 @@ const Comparison = ({ comparisonArray, districtRepo }) => {
       <div>
         {district2} Average: {comparisonObj[district2]}
       </div>
+      </FadeIn>
     </section>
   )
 }
