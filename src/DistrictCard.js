@@ -1,6 +1,7 @@
 import React from 'react';
 import './CssFolder/DistrictCard.css';
 import PropTypes from 'prop-types';
+import FadeIn from 'react-fade-in';
 
 const DistrictCard = ({ location, data, addToComparison, districtRepoClass, hasBeenSelected, removeFromComparisonArray }) => {
 
@@ -22,6 +23,7 @@ const DistrictCard = ({ location, data, addToComparison, districtRepoClass, hasB
                           : () => addToComparison(location)
 
   return (
+    <FadeIn>
       <article className={selected}>
         <h2 className='card-location'>{location}</h2>
         <ul>
@@ -29,8 +31,10 @@ const DistrictCard = ({ location, data, addToComparison, districtRepoClass, hasB
         </ul>
         {hasBeenSelected &&
           <div>District Average: {districtAverage}</div>}
-        <button onClick={buttonAction}>{buttonText}</button>
+        <button className="card-btn" onClick={buttonAction}>{buttonText}</button>
+
       </article>
+      </FadeIn>
   )
 }
 
