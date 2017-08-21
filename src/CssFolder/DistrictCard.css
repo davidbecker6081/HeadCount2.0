@@ -14,7 +14,7 @@ article {
   background: rgba(204, 219, 220, .7);
   border-radius: 10px;
   box-shadow: 3px 3px 3px #2D2D2A;
-  height: 340px;
+  height: 350px;
   margin: 10px;
   padding-bottom: 10px;
   text-align: center;
@@ -37,10 +37,6 @@ li {
   margin: 3px 0px;
 }
 
-article button:disabled {
-  background-color: red;
-}
-
 .belowFive {
   color: #CC0000;
 }
@@ -59,6 +55,15 @@ article button:disabled {
   cursor: pointer;
 	transform: scale(1.1);
   transition-property: transform;
+}
+
+.card-btn:disabled {
+  background-color: rgba(255,255,255,0.5);
+  cursor: default;
+}
+
+.card-btn:disabled:hover {
+  transform: scale(1);
 }
 
   @media screen and (max-width: 400px) {
