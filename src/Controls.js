@@ -20,18 +20,3 @@ export default Controls
 Controls.propTypes = {
   populateDistrictList: PropTypes.func.isRequired
 }
-
-
-
-// const dataKeys = {
-//   ThirdGradeTests: '3rd Grade Tests',
-//   EigthGradeTests: '8th Grade Test Scores',
-// let checkKeys = Object.keys(dataKeys).filter((key) => key === this.state.searchInput)
-// let keyForData = dataKeys[checkKeys[0]]
-// console.log('checkKeys', checkKeys);
-// console.log('keyforData', keyForData);
-// if (checkKeys.length) {
-  //populateDistrictList
-// } else {
-//   return alert('invalid input')
-// }

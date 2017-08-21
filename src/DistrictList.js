@@ -3,11 +3,14 @@ import DistrictCard from './DistrictCard';
 import './CssFolder/DistrictList.css';
 import PropTypes from 'prop-types'
 
-
-const DistrictList = ({ districtListArray, addToComparison, districtRepo, removeFromComparisonArray }) => {
+const DistrictList = ({ districtListArray, addToComparison, districtRepo, removeFromComparisonArray, comparisonArray }) => {
 
   const districtCardInstance = districtListArray.map((districtObj, i) =>
-      <DistrictCard {...districtObj} addToComparison={addToComparison}  districtRepoClass={districtRepo} removeFromComparisonArray={removeFromComparisonArray} key={i} />
+      <DistrictCard {...districtObj}
+        addToComparison={addToComparison}
+        districtRepoClass={districtRepo} removeFromComparisonArray={removeFromComparisonArray}
+        comparisonArray={comparisonArray}
+        key={i} />
   )
 
   return (
@@ -36,6 +39,13 @@ DistrictList.propTypes = {
       '2012': PropTypes.number,
       '2013': PropTypes.number,
       '2014': PropTypes.number
-    }).isRequired
-  }))
+    }).isRequired,
+    hasBeenSelected: PropTypes.bool.isRequired
+  })),
+  addToComparison: PropTypes.func.isRequired,
+  removeFromComparisonArray: PropTypes.func.isRequired,
+  districtRepo: PropTypes.shape({
+    data: PropTypes.object.isRequired
+  }),
+  comparisonArray: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired
 }

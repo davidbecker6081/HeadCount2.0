@@ -11,6 +11,7 @@ describe('DistrictCard', () => {
   let addToComparisonMock
   let removeFromComparisonArrayMock
   let districtRepo
+  let comparisonArray
 
   beforeEach(() => {
     addToComparisonMock = jest.fn()
@@ -34,7 +35,42 @@ describe('DistrictCard', () => {
         },
       hasBeenSelected: false
       }
-      wrapper = shallow(<DistrictCard {...districtData} addToComparison={addToComparisonMock} districtRepoClass={districtRepo} removeFromComparisonArray={removeFromComparisonArrayMock} key={5}/>)
+      comparisonArray = [
+        { location: 'COLORADO',
+          dataFormat: 'Percent',
+          data: {
+          '2004': 0.333,
+          '2005': 0.175,
+          '2006': 0.17,
+          '2007': 0.255,
+          '2008': 0.275,
+          '2009': 0.45,
+          '2010': 0.367,
+          '2011': 0.327,
+          '2012': 0.427,
+          '2013': 0.227,
+          '2014': 0.527 },
+          hasBeenSelected: true
+        },
+        {
+          location: 'ACADEMY 20',
+          dataFormat: 'Percent',
+          data: {
+          '2004': 0.333,
+          '2005': 0.135,
+          '2006': 0.17,
+          '2007': 0.5,
+          '2008': 0.275,
+          '2009': 0.45,
+          '2010': 0.367,
+          '2011': 0.367,
+          '2012': 0.427,
+          '2013': 0.227,
+          '2014': 0.627 },
+          hasBeenSelected: true
+        }
+      ]
+      wrapper = shallow(<DistrictCard {...districtData} addToComparison={addToComparisonMock} districtRepoClass={districtRepo} removeFromComparisonArray={removeFromComparisonArrayMock} comparisonArray={comparisonArray} key={5}/>)
   })
 
   it('should exist', () => {
@@ -87,7 +123,7 @@ describe('DistrictCard', () => {
 
     districtData.hasBeenSelected = true
     wrapper = shallow(<DistrictCard {...districtData}
-                                    addToComparison={addToComparisonMock} districtRepoClass={districtRepo} removeFromComparisonArray={removeFromComparisonArrayMock} key={5}/>)
+                                    addToComparison={addToComparisonMock} districtRepoClass={districtRepo} removeFromComparisonArray={removeFromComparisonArrayMock} comparisonArray={comparisonArray} key={5}/>)
     const actualClassWhenTrue = wrapper.find('article').at(0).props().className
 
     expect(actualClassWhenTrue).toEqual(selectedClass)
@@ -102,7 +138,7 @@ describe('DistrictCard', () => {
 
     districtData.hasBeenSelected = true
     wrapper = shallow(<DistrictCard {...districtData}
-                                    addToComparison={addToComparisonMock} districtRepoClass={districtRepo} removeFromComparisonArray={removeFromComparisonArrayMock} key={5}/>)
+                                    addToComparison={addToComparisonMock} districtRepoClass={districtRepo} removeFromComparisonArray={removeFromComparisonArrayMock} comparisonArray={comparisonArray} key={5}/>)
 
     const actualTextWhenTrue = wrapper.find('button').at(0).text()
 
@@ -119,7 +155,7 @@ describe('DistrictCard', () => {
 
     districtData.hasBeenSelected = true
     wrapper = shallow(<DistrictCard {...districtData}
-                                    addToComparison={addToComparisonMock} districtRepoClass={districtRepo} removeFromComparisonArray={removeFromComparisonArrayMock} key={5}/>)
+                                    addToComparison={addToComparisonMock} districtRepoClass={districtRepo} removeFromComparisonArray={removeFromComparisonArrayMock} comparisonArray={comparisonArray} key={5}/>)
 
     const btnWhenTrue = wrapper.find('button')
     btnWhenTrue.simulate('click')
@@ -134,7 +170,7 @@ describe('DistrictCard', () => {
 
     districtData.hasBeenSelected = true
     wrapper = shallow(<DistrictCard {...districtData}
-                                    addToComparison={addToComparisonMock} districtRepoClass={districtRepo} removeFromComparisonArray={removeFromComparisonArrayMock} key={5}/>)
+                                    addToComparison={addToComparisonMock} districtRepoClass={districtRepo} removeFromComparisonArray={removeFromComparisonArrayMock} comparisonArray={comparisonArray} key={5}/>)
 
     const actualAverageDisplayWhenTrue = wrapper.find('div').at(0).text()
 
