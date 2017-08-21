@@ -6,6 +6,7 @@ import kinderData from '../data/kindergartners_in_full_day_program.js';
 import DistrictRepository from './DistrictRepository'
 import Comparison from './Comparison'
 
+
 class App extends Component {
   constructor() {
     super()
@@ -73,17 +74,20 @@ class App extends Component {
             <div className="comparison-container">
 
               {this.state.comparison.length < 2 &&
-                <p>Add Two Districts To Compare</p>}
+                <p className="comparison-text">Add Two Districts To Compare</p>}
 
               <div className="comparison-wrapper">
-                  <DistrictList districtListArray={this.state.comparison} addToComparison={this.addToComparison.bind(this)} districtRepo={this.data}
+
+                  <DistrictList
+                   districtListArray={this.state.comparison} addToComparison={this.addToComparison.bind(this)} districtRepo={this.data}
                   removeFromComparisonArray={this.removeFromComparisonArray.bind(this)}/>
+
               </div>
 
               {this.state.comparison.length === 2 &&
                 <div className="comparison-component-btn">
                   <Comparison comparisonArray={this.state.comparison} districtRepo={this.data} />
-                  <button className="clear-comparison-btn" onClick={this.resetComparisonArray.bind(this)}>Clear Comparison</button>
+                  <button className='clear-comparison-btn' onClick={this.resetComparisonArray.bind(this)}>Clear Comparison</button>
                 </div>
               }
 

@@ -5,7 +5,7 @@ body, html, section, main, div, aside, ul {
   margin: 0;
   border: 0;
   padding: 0;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Anton', sans-serif;;
 }
 
 body {
@@ -15,12 +15,12 @@ body {
   background-repeat: repeat;
   }
 
-  .app-title {
-    color: #FFF;
-  }
+.app-title {
+  color: #FFF;
+}
 
-  .app-container {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-  }
+.app-container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}

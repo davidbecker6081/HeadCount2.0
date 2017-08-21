@@ -5,47 +5,48 @@ body, html, section, main, div, aside {
   margin: 0;
   border: 0;
   padding: 0;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Anton', sans-serif;  ;
 }
 
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700');
+
 .controls-container {
-  width: 100%;
   margin-bottom: 30px;
   margin-top: 100px;
+  width: 100%;
 }
 
 .app-title {
   font-size: 72px;
-  text-shadow: 4px 4px #2D2D2A;
-  text-align: center;
   margin: 0;
   padding: 20px 0;
+  text-align: center;
+  text-shadow: 4px 4px #2D2D2A;
 }
 
 .heading-container {
-  width: 75%;
-  height: 200px;
-  text-align: center;
+  align-items:  center;
   background: rgba(204, 219, 220, .7);
   border-radius: 10px;
-  align-items:  center;
+  box-shadow: 3px 3px 3px #2D2D2A;
+  height: 200px;
+  justify-content: center;
   margin-top: 60px;
   margin: auto;
-  justify-content: center;
-  box-shadow: 3px 3px 3px #2D2D2A;
-
+  text-align: center;
+  width: 75%;
 }
 
 .search-input {
-  height: 50px;
-  width: 300px;
   border-radius: 5px;
   border: none;
-  margin: auto;
-  text-align: center;
   box-shadow: 5px 5px 3px #2D2D2A;
   font-size: 16px;
+  height: 50px;
+  margin: auto;
   outline: none;
+  text-align: center;
+  width: 300px;
 }
 
 .search-input:hover {
@@ -54,4 +55,56 @@ body, html, section, main, div, aside {
 
 .search-input::placeholder {
   color: #000;
+}
+
+.fixed-nav .heading-container {
+  background-image: url('http://edfuel.org/wp-content/uploads/2015/09/blueprint2.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  box-shadow: 3px 3px 3px #2D2D2A;
+  position: fixed;
+  top: 0;
+  transition: all 0.7s;
+  width: 100%;
+  z-index: 9999;
+}
+
+.fixed-nav .comparison-container {
+  margin-top: 300px;
+  transition: 1.5s;
+}
+
+@media screen and (max-width: 675px) {
+  .app-title {
+    font-size: 48px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .app-title {
+    font-size: 36px;
+  }
+
+  .heading-container {
+    height: 175px;
+  }
+
+  .search-input {
+    width: 250px;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .app-title {
+    font-size: 28px;
+  }
+
+  .heading-container {
+    height: 150px;
+  }
+
+  .search-input {
+    height: 35px;
+    width: 200px;
+  }
 }
