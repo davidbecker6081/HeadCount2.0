@@ -3,8 +3,8 @@ import './CssFolder/Controls.css';
 import PropTypes from 'prop-types';
 
  const Controls = ({ populateDistrictList }) => {
+
    const fixNav = () => {
-     console.log('fixed nav ran');
      const nav = document.querySelector('.heading-container');
      const topOfNav = nav.offsetTop;
      if(window.scrollY >= topOfNav + 2){
@@ -15,6 +15,7 @@ import PropTypes from 'prop-types';
        document.body.classList.remove('fixed-nav');
      }
    }
+   
    window.addEventListener('scroll', fixNav)
 
   return (
